@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Birthday Background To Photo - Shonen Style</title>
+    <meta name="description" content="Turn ordinary photos into high-energy birthday celebrations with our AI tool. Manga style transformations!">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Kosugi+Maru&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-content">
+            <a href="#" class="logo">
+                <span class="logo-text">RemixAI</span>
+                <span class="logo-badge">MANGA</span>
+            </a>
+            
+            <div class="nav-links-wrapper" id="nav-links">
+                <ul class="nav-links">
+                    <li><a href="#playground" class="nav-item">Create</a></li>
+                    <li><a href="#how-to-use" class="nav-item">Mission</a></li>
+                    <li><a href="#gallery" class="nav-item">Gallery</a></li>
+                    <li><a href="#faqs" class="nav-item">Intel</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-actions">
+                <a href="#playground" class="btn btn-sm">START!</a>
+                <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg-effects">
+            <div class="speed-lines"></div>
+            <div class="halftone-overlay"></div>
+        </div>
+        
+        <div class="container hero-grid">
+            <div class="hero-text-panel">
+                <div class="shout-bubble">FREE AI TOOL!</div>
+                <h1 class="hero-title">
+                    <span class="outline-text">ADD</span> 
+                    <span class="highlight-text">BIRTHDAY</span> 
+                    <span class="outline-text">BACKGROUND</span>
+                </h1>
+                <p class="hero-desc">
+                    Unleash the celebration! Transform boring photos into high-energy birthday masterpieces with just one click. It's fast, it's fun, it's automatic!
+                </p>
+                <div class="hero-cta-wrapper">
+                    <a href="#playground" class="btn btn-xl btn-primary">TRANSFORM NOW!</a>
+                    <span class="action-arrow">Doing it! ➔</span>
+                </div>
+            </div>
+            
+            <div class="hero-visual-panel">
+                <div class="comic-frame main-frame">
+                    <img src="images/hero_main.jpg" alt="Hero Transformation" class="hero-image">
+                    <div class="sfx-text">POW!</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Playground Section -->
+    <section id="playground" class="section playground-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">MISSION: CREATE</h2>
+                <div class="title-underline"></div>
+                <p class="section-subtitle">Upload your target image and initialize the birthday sequence!</p>
+            </div>
+
+            <div class="tool-wrapper manga-border">
+                <!-- State 1: Upload -->
+                <div id="upload-state" class="tool-state active">
+                    <div class="upload-zone" id="drop-zone">
+                        <div class="upload-icon">📂</div>
+                        <h3>DRAG & DROP TARGET HERE</h3>
+                        <p>or click to select file</p>
+                        <input type="file" id="file-input" accept="image/*" hidden>
+                        <button class="btn btn-secondary" onclick="document.getElementById('file-input').click()">SELECT FILE</button>
+                    </div>
+                </div>
+
+                <!-- State 2: Preview -->
+                <div id="preview-state" class="tool-state hidden">
+                    <div class="preview-container">
+                        <div class="comic-frame">
+                            <img id="image-preview" src="" alt="Preview">
+                        </div>
+                        <div class="tool-controls">
+                            <button class="btn btn-text" id="cancel-btn">CANCEL</button>
+                            <button class="btn btn-primary generate-btn" id="generate-btn">
+                                <span class="btn-text">ACTIVATE POWER!</span>
+                                <span class="btn-loading hidden">CHARGING...</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- State 3: Processing -->
+                <div id="processing-state" class="tool-state hidden">
+                    <div class="loading-animation">
+                        <div class="spinner"></div>
+                        <h3 class="loading-text">CONVERTING ENERGY...</h3>
+                    </div>
+                </div>
+
+                <!-- State 4: Result -->
+                <div id="result-state" class="tool-state hidden">
+                    <div class="result-grid">
+                        <div class="result-card">
+                            <span class="card-label">ORIGINAL</span>
+                            <img id="result-original" src="" alt="Original">
+                        </div>
+                        <div class="result-arrow">➜</div>
+                        <div class="result-card featured">
+                            <span class="card-label">TRANSFORMED</span>
+                            <img id="result-final" src="" alt="Final Result">
+                            <div class="sfx-text small">TA-DA!</div>
+                        </div>
+                    </div>
+                    <div class="result-actions">
+                        <button class="btn btn-secondary" id="reset-btn">NEW MISSION</button>
+                        <button class="btn btn-primary" id="download-btn">DOWNLOAD LOOT</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How to Use Section -->
+    <section id="how-to-use" class="section how-to-section">
+        <div class="bg-pattern-dots"></div>
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">BATTLE PLAN</h2>
+                <div class="title-underline"></div>
+                <p class="section-subtitle">Execute these 3 steps to achieve victory!</p>
+            </div>
+
+            <div class="steps-grid">
+                <!-- Step 1 -->
+                <div class="step-card manga-panel">
+                    <div class="step-badge">01</div>
+                    <div class="step-visual">
+                        <img src="images/step_1.jpg" alt="Upload" class="step-icon">
+                    </div>
+                    <div class="step-content">
+                        <h3>UPLOAD TARGET</h3>
+                        <p>Select your photo. The clearer, the better the power-up!</p>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="step-card manga-panel">
+                    <div class="step-badge">02</div>
+                    <div class="step-visual">
+                        <img src="images/step_2.jpg" alt="Process" class="step-icon">
+                    </div>
+                    <div class="step-content">
+                        <h3>AI TRANSFORM</h3>
+                        <p>Our engine detects the subject and blasts the background.</p>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="step-card manga-panel">
+                    <div class="step-badge">03</div>
+                    <div class="step-visual">
+                        <img src="images/step_3.jpg" alt="Download" class="step-icon">
+                    </div>
+                    <div class="step-content">
+                        <h3>COLLECT LOOT</h3>
+                        <p>Download your new epic birthday scene and share it!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="section gallery-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">HALL OF FAME</h2>
+                <div class="title-underline"></div>
+                <p class="section-subtitle">Witness previous successful transformations.</p>
+            </div>
+
+            <div class="gallery-grid">
+                <div class="gallery-item manga-frame item-1">
+                    <img src="images/gallery_1.jpg" alt="Example 1" class="gallery-image">
+                    <div class="hover-sfx">JOY!</div>
+                </div>
+                <div class="gallery-item manga-frame item-2">
+                    <img src="images/gallery_2.jpg" alt="Example 2" class="gallery-image">
+                    <div class="hover-sfx">POP!</div>
+                </div>
+                <div class="gallery-item manga-frame item-3">
+                    <img src="images/gallery_3.jpg" alt="Example 3" class="gallery-image">
+                    <div class="hover-sfx">WOW!</div>
+                </div>
+                <div class="gallery-item manga-frame item-4">
+                    <img src="images/gallery_4.jpg" alt="Example 4" class="gallery-image">
+                    <div class="hover-sfx">EPIC!</div>
+                </div>
+                <div class="gallery-item manga-frame item-5">
+                    <img src="images/gallery_5.jpg" alt="Example 5" class="gallery-image">
+                    <div class="hover-sfx">FUN!</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section testimonials-section">
+        <div class="container">
+            <h2 class="section-title center">USER VOICES</h2>
+            <div class="testimonials-wrapper">
+                <div class="testimonial-card manga-panel">
+                    <div class="avatar-circle">A</div>
+                    <div class="speech-bubble">
+                        <p>"I turned my cat photo into a party poster! The style is super energetic!"</p>
+                        <span class="author">- Alex K.</span>
+                    </div>
+                </div>
+                <div class="testimonial-card manga-panel">
+                    <div class="avatar-circle">S</div>
+                    <div class="speech-bubble">
+                        <p>"Best birthday tool ever. It feels like a comic book come to life."</p>
+                        <span class="author">- Sarah J.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQs Section -->
+    <section id="faqs" class="section faq-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">INTEL / FAQ</h2>
+                <div class="title-underline"></div>
+            </div>
+
+            <div class="accordion-wrapper">
+                <div class="accordion-item manga-panel">
+                    <button class="accordion-header">
+                        Is this tool really free?
+                        <span class="icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Yes! You can perform unlimited transformations completely free of charge. No hidden energy costs!</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item manga-panel">
+                    <button class="accordion-header">
+                        What image formats are supported?
+                        <span class="icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>We support JPG, PNG, and WebP formats. Keep your files under 5MB for maximum speed.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item manga-panel">
+                    <button class="accordion-header">
+                        Can I use this on mobile?
+                        <span class="icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Absolutely! The interface is optimized for all devices, so you can edit on the go.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item manga-panel">
+                    <button class="accordion-header">
+                        How long does processing take?
+                        <span class="icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Usually about 3-5 seconds depending on your connection speed. It's super fast!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <h3>RemixAI.Manga</h3>
+                <p>Creating joyful moments with the power of AI and Anime aesthetics.</p>
+            </div>
+            <div class="footer-links">
+                <h4>QUICK LINKS</h4>
+                <ul>
+                    <li><a href="#playground">Create</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 RemixAI Inc. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
